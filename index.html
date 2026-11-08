@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ماتريال التشفير المتقدم - الميدتيرم</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #090d16 0%, #0f172a 100%);
+      color: #f1f5f9;
+      min-height: 100vh;
+      padding: 32px 16px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 680px;
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 28px 24px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    .header {
+      text-align: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 20px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .title {
+      font-size: 26px;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+
+    /* Scope Tags Container */
+    .scope-box {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin-top: 12px;
+      text-align: right;
+    }
+
+    .scope-title {
+      font-size: 13px;
+      color: #94a3b8;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tags-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag-item {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      background: rgba(245, 158, 11, 0.12);
+      color: #fde68a;
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .topic-card {
+      background: #192231;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .topic-card:hover {
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+
+    .topic-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .topic-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', 'Cairo', sans-serif;
+    }
+
+    .topic-title i {
+      color: #f59e0b;
+      font-size: 14px;
+    }
+
+    .topic-author {
+      font-size: 12px;
+      color: #94a3b8;
+      font-weight: 600;
+    }
+
+    .link-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #111827;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-bottom: 8px;
+      text-decoration: none;
+      color: #e2e8f0;
+      font-size: 13.5px;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    .link-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .link-item:hover {
+      background: #1f293d;
+      border-color: #f59e0b;
+      color: #fbbf24;
+      transform: translateX(-3px);
+    }
+
+    .link-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .link-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+    }
+
+    .icon-yt {
+      background: rgba(239, 68, 68, 0.15);
+      color: #ef4444;
+    }
+
+    .icon-drive {
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+    }
+
+    .icon-sheet {
+      background: rgba(34, 197, 94, 0.15);
+      color: #22c55e;
+    }
+
+    .icon-doc {
+      background: rgba(59, 130, 246, 0.15);
+      color: #60a5fa;
+    }
+
+    .arrow-icon {
+      color: #64748b;
+      font-size: 12px;
+    }
+
+    .link-item:hover .arrow-icon {
+      color: #fbbf24;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="badge">
+        <i class="fa-solid fa-shield-halved"></i> Advanced Cryptography
+      </div>
+      <h1 class="title">ماتريال التشفير المتقدم</h1>
+      
+      <!-- Scope / Topics -->
+      <div class="scope-box">
+        <div class="scope-title">
+          <i class="fa-solid fa-list-check"></i>
+          <span>الموضوعات المقررة في الميدتيرم:</span>
+        </div>
+        <div class="tags-list">
+          <span class="tag-item">Playlist Number Theory</span>
+          <span class="tag-item">DES</span>
+          <span class="tag-item">RC4</span>
+          <span class="tag-item">CHACHA20</span>
+          <span class="tag-item">SHA1</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1. Number Theory -->
+    <div class="topic-card">
+      <div class="topic-header">
+        <div class="topic-title">
+          <i class="fa-solid fa-calculator"></i> Number Theory
+        </div>
+        <span class="topic-author">شرح د/ كريم</span>
+      </div>
+      <a href="https://youtube.com/playlist?list=PLp2eAGIFKMEWb3PjNdXskeTm7q0f8nEJ8&si=pVrSiZIQqD6TGJIn" target="_blank" class="link-item">
+        <div class="link-left">
+          <div class="link-icon icon-yt"><i class="fa-brands fa-youtube"></i></div>
+          <span>بلاي ليست شرح Number Theory</span>
+        </div>
+        <i class="fa-solid fa-chevron-left arrow-icon"></i>
+      </a>
+    </div>
+
+    <!-- 2. DES -->
+    <div class="topic-card">
+      <div class="topic-header">
+        <div class="topic-title">
+          <i class="fa-solid fa-key"></i> DES Algorithm
+        </div>
+        <span class="topic-author">شرح د/ كريم & م/ عبدالرحمن هاشم</span>
+      </div>
+      
+      <a href="https://youtu.be/-Wluz4U7pAc?list=PLp2eAGIFKMEXAMRjkpRgxKG-W9Hz-sHnw" target="_blank" class="link-item">
+        <div class="link-left">
+          <div class="link-icon icon-yt"><i class="fa-brands fa-youtube"></i></div>
+          <span>فيديو شرح DES - د/ كريم</span>
+        </div>
+        <i class="fa-solid fa-chevron-left arrow-icon"></i>
+      </a>
+
+      <a href="https://drive.google.com/file/d/1JlS7RtRWI3BGTBVsl2eBclojRQA_KEJq/view?usp=sharing" target="_blank" class="link-item">
+        <div class="link-left">
+          <div class="link-icon icon-drive"><i class="fa-regular fa-file-pdf"></i></div>
+          <span>ملف شرح DES</span>
+        </div>
+        <i class="fa-solid fa-chevron-left arrow-icon"></i>
+      </a>
+
+      <a href="https://drive.google.com/file/d/1MLDQ00mJP5F9q8IJ2E8SJYKsnRv2CFz9/view?ts=6aecab24" target="_blank" class="link-card-inner link-item">
+        <div class="link-left">
+          <div class="link-icon icon-drive"><i class="fa-solid fa-play"></i></div>
+          <span>شرح عبدالرحمن هاشم</span>
+        </div>
+        <i class="fa-solid fa-chevron-left arrow-icon"></i>
+      </a>
+
+      <a href="https://docs.google.com/spreadsheets/d/131NrWF7n5f6WN4CeTG8oE8vG9cfjcnuK/edit?gid=286752147#gid=286752147" target="_blank" class="link-item">
+        <div class="link-left">
+          <div class="link-icon icon-sheet"><i class="fa-solid fa-table"></i></div>
+          <span>ملف شيت شرح عبدالرحمن هاشم (Sheets)</span>
+        </div>
+        <i class="fa-solid fa-chevron-left arrow-icon"></i>
+      </a>
+    </div>
+
+    <!-- 3. SHA-1 -->
+    <div class="topic-card">
+      <div class="topic-header">
+        <div class="topic-title">
+          <i class="fa-solid fa-hashtag"></i> SHA-1 Hash
+        </div>
+        <span class="topic-author">فيديو ومستند تفصيلي</span>
+      </div>
+
+      <a href="https://www.youtube.com/watch?v=lnHOyz3jays" target="_blank" class="link-item">
+        <div class="link-left">
+          <div class="link-icon icon-yt"><i class="fa-brands fa-youtube"></i></div>
+          <span>فيديو شرح SHA1</span>
+        </div>
+        <i class="fa-solid fa-chevron-left arrow-icon"></i>
+      </a>
+
+      <a href="https://docs.google.com/document/d/1Ggt30QgNASnQ88929EUyqFRUNe4OF4Xp/edit?usp=sharing&ouid=104777748909389857304&rtpof=true&sd=true" target="_blank" class="link-item">
+        <div class="link-left">
+          <div class="link-icon icon-doc"><i class="fa-solid fa-file-lines"></i></div>
+          <span>ملف شرح SHA1 (Google Docs)</span>
+        </div>
+        <i class="fa-solid fa-chevron-left arrow-icon"></i>
+      </a>
+    </div>
+
+    <!-- 4. RC4 -->
+    <div class="topic-card">
+      <div class="topic-header">
+        <div class="topic-title">
+          <i class="fa-solid fa-lock"></i> RC4 Stream Cipher
+        </div>
+        <span class="topic-author">شرح وملف عملي</span>
+      </div>
+
+      <a href="https://youtu.be/MNZw63OkaSk?si=m0Ly2Lq4qlcuDim0" target="_blank" class="link-item">
+        <div class="link-left">
+          <div class="link-icon icon-yt"><i class="fa-brands fa-youtube"></i></div>
+          <span>فيديو شرح RC4</span>
+        </div>
+        <i class="fa-solid fa-chevron-left arrow-icon"></i>
+      </a>
+
+      <a href="https://drive.google.com/file/d/1qkY19dFYXcKJDQfkWI4do38zHeV0oomc/view?usp=drive_link" target="_blank" class="link-item">
+        <div class="link-left">
+          <div class="link-icon icon-drive"><i class="fa-solid fa-file"></i></div>
+          <span>ملف شرح RC4</span>
+        </div>
+        <i class="fa-solid fa-chevron-left arrow-icon"></i>
+      </a>
+    </div>
+
+    <!-- 5. CHACHA20 -->
+    <div class="topic-card">
+      <div class="topic-header">
+        <div class="topic-title">
+          <i class="fa-solid fa-shield-virus"></i> CHACHA20
+        </div>
+        <span class="topic-author">فيديو الشرح</span>
+      </div>
+
+      <a href="https://youtu.be/i5fnbUEP_d0?si=7K9IOPKQWhuW9Zt_" target="_blank" class="link-item">
+        <div class="link-left">
+          <div class="link-icon icon-yt"><i class="fa-brands fa-youtube"></i></div>
+          <span>فيديو شرح CHACHA20</span>
+        </div>
+        <i class="fa-solid fa-chevron-left arrow-icon"></i>
+      </a>
+    </div>
+
+  </div>
+
+</body>
+</html>
